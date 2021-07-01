@@ -3,4 +3,26 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
+    <servlet>
+        <description>添加到类路径：打开Project Structure 左侧选中Modules，在Dependecies中，
+            点击右侧“+”号，选择JARS or directories…选择WEB-INF\lib下的Jar包添加</description>
+        <display-name>ValiateUserNameServlet</display-name>
+        <servlet-name>ValiateUserNameServlet</servlet-name>
+        <servlet-class>servlets.ValiateUserNameServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ValiateUserNameServlet</servlet-name>
+        <url-pattern>/valiateUserName</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <description></description>
+        <display-name>AddToCartServlet</display-name>
+        <servlet-name>AddToCartServlet</servlet-name>
+        <servlet-class>servlets.AddToCartServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddToCartServlet</servlet-name>
+        <url-pattern>/addToCart</url-pattern>
+    </servlet-mapping>
 </web-app>
