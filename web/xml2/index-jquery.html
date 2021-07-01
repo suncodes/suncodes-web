@@ -1,0 +1,48 @@
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title>People at Clearleft</title>
+    <style type="text/css">
+        @import url("1.css");
+    </style>
+    <script type="text/javascript" src="../scripts/jquery-1.7.2.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("a").click(function () {
+                var href = this.href;
+                $.ajax({
+                    url: href,
+                    type: "GET",
+                    dataType: "xml",
+                    // 声明 dataTye 为 xml格式，则data = response.responseXML
+                    success: function (data) {
+                        var name = $(data).find("name").text();
+                        var email = $(data).find("email").text();
+                        var website = $(data).find("website").text();
+                        $("#details").empty()
+                                .append("<h2><a href='mailto:" + email + "'>" + name + "</a></h2>")
+                                .append("<a href='" +　website +　"'>" + website + "</a>");
+                    }
+                });
+                return false;
+            })
+        })
+    </script>
+</head>
+<body>
+<h1>People</h1>
+<ul>
+    <li>
+        <a href="files/andy.xml">Andy</a>
+    </li>
+    <li>
+        <a href="files/richard.xml">Richard</a>
+    </li>
+    <li>
+        <a href="files/jeremy.xml">Jeremy</a>
+    </li>
+</ul>
+<div id="details"></div>
+</body>
+
+</html>
