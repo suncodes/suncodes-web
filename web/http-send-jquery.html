@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试http请求</title>
+    <script type="text/javascript" src="scripts/jquery-1.7.2.js"></script>
+</head>
+<body>
+<div>
+    <a href="#" id="sendParamsGet">点击发送 params 请求 GET</a>
+</div>
+<div>
+    <a href="#" id="sendParamsPost">点击发送 params 请求 POST</a>
+</div>
+<div>
+    <a href="#" id="sendUrlEncodedGet">点击发送 urlencoded 请求 GET</a>
+</div>
+<div>
+    <a href="#" id="sendUrlEncodedPost">点击发送 urlencoded 请求 POST</a>
+</div>
+<div>
+    <a href="#" id="sendFormDataGet">点击发送 formdata 请求 GET</a>
+</div>
+<div>
+    <a href="#" id="sendFormDataPost">点击发送 formdata 请求 POST</a>
+</div>
+<div>
+    <a href="#" id="sendJsonPost">点击发送 json 请求 POST</a>
+</div>
+<div>
+    <a href="#" id="sendStreamPost">点击发送 stream 请求 POST</a>
+</div>
+</body>
+<script type="text/javascript">
+    window.onload = function () {
+        document.getElementById("sendParamsGet").onclick = function () {
+            $.ajax({
+                url: "http://localhost:8080/paper-crawler/get-crawler-paper-import-by-query?id=33918&collectSource=2",
+                type: "GET",
+                success: function (data) {
+                    console.log("成功了");
+                    console.log(data);
+                },
+                error: function (data) {
+                    console.log("失败了");
+                    console.log(data);
+                }
+            });
+            return false;
+        };
+
+        document.getElementById("sendParamsPost").onclick = function () {
+            $.ajax({
+                url: "http://localhost:8080/paper-crawler/get-crawler-paper-import-by-query?id=33918&collectSource=2",
+                type: "POST",
+                success: function (data) {
+                    console.log("成功了");
+                    console.log(data);
+                },
+                error: function (data) {
+                    console.log("失败了");
+                    console.log(data);
+                }
+            });
+            return false;
+        };
+
+        // jquery ajax 对于 GET urlencoded 形式，会自动转换为 params 形式
+        // jquery ajax 在 urlencoded 形式下，会自动把 对象转为 查询字符串
+        document.getElementById("sendUrlEncodedGet").onclick = function () {
+            var obj = {
+                "id": "33918",
+                "collectSource": "2"
+            };
+            $.ajax({
+                url: "http://localhost:8080/paper-crawler/get-crawler-paper-import-by-query",
+                // data: "id=33918&collectSource=2",
+                data: obj,
+                type: "GET",
+                success: function (data) {
+                    console.log("成功了");
+                    console.log(data);
+                },
+                error: function (data) {
+                    console.log("失败了");
+                    console.log(data);
+                }
+            });
+            return false;
+        };
+
+        document.getElementById("sendUrlEncodedPost").onclick = function () {
+            var obj = {
+                "id": "33918",
+                "collectSource": "2"
+            };
+            $.ajax({
+                url: "http://localhost:8080/paper-crawler/get-crawler-paper-import-by-query",
+                data: "id=33918&collectSource=2",
+                // data: obj,
+                type: "POST",
+                success: function (data) {
+                    console.log("成功了");
+                    console.log(data);
+                },
+                error: function (data) {
+                    console.log("失败了");
+                    console.log(data);
+                }
+            });
+            return false;
+        };
+
+        document.getElementById("sendFormDataGet").onclick = function () {
+            var form = new FormData();
+            form.append("id", "33918");
+            form.append("collectSource", "2");
+
+            $.ajax({
+                url: "http://localhost:8080/paper-crawler/get-crawler-paper-import-by-query",
+                // data: "id=33918&collectSource=2",
+                data: form,
+                type: "GET",
+                mimeType: "multipart/form-data",
+                contentType: false,
+                processData: false,
+                success: function (data) {
+                    console.log("成功了");
+                    console.log(data);
+                },
+                error: function (data) {
+                    console.log("失败了");
+                    console.log(data);
+                }
+            });
+            return false;
+        };
+
+        document.getElementById("sendFormDataPost").onclick = function () {
+            var form = new FormData();
+            form.append("id", "33918");
+            form.append("collectSource", "2");
+
+            $.ajax({
+                url: "http://localhost:8080/paper-crawler/get-crawler-paper-import-by-query",
+                // data: "id=33918&collectSource=2",
+                data: form,
+                type: "POST",
+                mimeType: "multipart/form-data",
+                contentType: false,
+                processData: false,
+                success: function (data) {
+                    console.log("成功了");
+                    console.log(data);
+                },
+                error: function (data) {
+                    console.log("失败了");
+                    console.log(data);
+                }
+            });
+            return false;
+        };
+
+        document.getElementById("sendJsonPost").onclick = function () {
+            var data = JSON.stringify({
+                "resourceName": "2020-2021学年江苏省南通市海安市一年级（下）期中语文试卷",
+                "resourceStatus": 3,
+                "failedCode": 209
+            });
+
+            $.ajax({
+                url: "http://localhost:8080/paper-crawler/get-crawler-paper-import-by-query",
+                data: data,
+                type: "POST",
+                contentType: "application/json",
+                // 不加此选项，则需要把json转为字符串
+                processData: false,
+                success: function (data) {
+                    console.log("成功了");
+                    console.log(data);
+                },
+                error: function (data) {
+                    console.log("失败了");
+                    console.log(data);
+                }
+            });
+            return false;
+        };
+
+        document.getElementById("sendStreamPost").onclick = function () {
+            var x = new Uint8Array(1);
+            x[0]=128;
+
+            $.ajax({
+                url: "http://localhost:8080/paper-crawler/get-crawler-paper-import-by-query",
+                data: x,
+                type: "POST",
+                contentType: "application/octet-stream",
+                // 不加此选项，则需要把json转为字符串
+                processData: false,
+                success: function (data) {
+                    console.log("成功了");
+                    console.log(data);
+                },
+                error: function (data) {
+                    console.log("失败了");
+                    console.log(data);
+                }
+            });
+            return false;
+        };
+    }
+</script>
+</html>

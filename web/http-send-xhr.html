@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试http请求</title>
+</head>
+<body>
+<div>
+    <a href="#" id="sendParamsGet">点击发送 params 请求 GET</a>
+</div>
+<div>
+    <a href="#" id="sendParamsPost">点击发送 params 请求 POST</a>
+</div>
+<div>
+    <a href="#" id="sendUrlEncodedGet">点击发送 urlencoded 请求 GET</a>
+</div>
+<div>
+    <a href="#" id="sendUrlEncodedPost">点击发送 urlencoded 请求 POST</a>
+</div>
+<div>
+    <a href="#" id="sendFormDataGet">点击发送 formdata 请求 GET</a>
+</div>
+<div>
+    <a href="#" id="sendFormDataPost">点击发送 formdata 请求 POST</a>
+</div>
+<div>
+    <a href="#" id="sendJsonPost">点击发送 json 请求 POST</a>
+</div>
+<div>
+    <a href="#" id="sendStreamPost">点击发送 stream 请求 POST</a>
+</div>
+</body>
+<script type="text/javascript">
+    window.onload = function () {
+
+        // xhr 默认：Content-Type: text/plain;charset=UTF-8
+
+        document.getElementById("sendParamsGet").onclick = function () {
+            let xhr = new XMLHttpRequest();
+            xhr.withCredentials = true;
+            xhr.addEventListener("readystatechange", function() {
+                if(this.readyState === 4) {
+                    console.log(this.responseText);
+                }
+            });
+            xhr.open("GET", "http://localhost:8080/paper-crawler/get-crawler-paper-import-by-query?id=33918&collectSource=2");
+            xhr.send();
+            return false;
+        };
+
+        document.getElementById("sendParamsPost").onclick = function () {
+            let xhr = new XMLHttpRequest();
+            xhr.withCredentials = true;
+            xhr.addEventListener("readystatechange", function() {
+                if(this.readyState === 4) {
+                    console.log(this.responseText);
+                }
+            });
+            xhr.open("POST", "http://localhost:8080/paper-crawler/get-crawler-paper-import-by-query?id=33918&collectSource=2");
+            xhr.send();
+            return false;
+        };
+
+        // TODO 使用 GET 方法 发现实体，浏览器会忽略其实体内容
+        document.getElementById("sendUrlEncodedGet").onclick = function () {
+            let xhr = new XMLHttpRequest();
+            xhr.withCredentials = true;
+            xhr.addEventListener("readystatechange", function() {
+                if(this.readyState === 4) {
+                    console.log(this.responseText);
+                }
+            });
+            xhr.open("GET", "http://localhost:8080/paper-crawler/get-crawler-paper-import-by-query");
+            // 在使用 xhr 的时候，不能使用对象的形式传参（除了form-data对象）
+            var obj = {
+                "id": "33918",
+                "collectSource": "2"
+            };
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.send("id=33918&collectSource=2");
+            // xhr.send(obj);
+            return false;
+        };
+
+        document.getElementById("sendUrlEncodedPost").onclick = function () {
+            let xhr = new XMLHttpRequest();
+            xhr.withCredentials = true;
+            xhr.addEventListener("readystatechange", function() {
+                if(this.readyState === 4) {
+                    console.log(this.responseText);
+                }
+            });
+            xhr.open("POST", "http://localhost:8080/paper-crawler/get-crawler-paper-import-by-query");
+            // 在使用 xhr 的时候，不能使用对象的形式传参（除了formData对象）
+            var obj = {
+                "id": "33918",
+                "collectSource": "2"
+            };
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.send("id=33918&collectSource=2");
+            // xhr.send(obj);
+            return false;
+        };
+
+        // 实体被丢掉
+        document.getElementById("sendFormDataGet").onclick = function () {
+            let xhr = new XMLHttpRequest();
+            xhr.withCredentials = true;
+            xhr.addEventListener("readystatechange", function() {
+                if(this.readyState === 4) {
+                    console.log(this.responseText);
+                }
+            });
+            xhr.open("GET", "http://localhost:8080/paper-crawler/get-crawler-paper-import-by-query");
+            // 在使用 xhr 的时候，不能使用对象的形式传参（除了form-data对象）
+            var data = new FormData();
+            data.append("id", "33918");
+            data.append("collectSource", "2");
+
+            // xhr.setRequestHeader("Content-Type", "multipart/form-data");
+            xhr.send(data);
+            return false;
+        };
+
+        document.getElementById("sendFormDataPost").onclick = function () {
+            let xhr = new XMLHttpRequest();
+            xhr.withCredentials = true;
+            xhr.addEventListener("readystatechange", function() {
+                if(this.readyState === 4) {
+                    console.log(this.responseText);
+                }
+            });
+            xhr.open("POST", "http://localhost:8080/paper-crawler/get-crawler-paper-import-by-query");
+            // 在使用 xhr 的时候，不能使用对象的形式传参（除了form-data对象）
+            var data = new FormData();
+            data.append("id", "33918");
+            data.append("collectSource", "2");
+            // 不要加 content-type
+            // xhr.setRequestHeader("Content-Type", "multipart/form-data");
+            // xhr.setRequestHeader("Content-Type", "multipart/form-data; boundary=----WebKitFormBoundaryDRp4HO58zBMgvYbV");
+            xhr.send(data);
+            return false;
+        };
+
+        document.getElementById("sendJsonPost").onclick = function () {
+            let xhr = new XMLHttpRequest();
+            xhr.withCredentials = true;
+            xhr.addEventListener("readystatechange", function() {
+                if(this.readyState === 4) {
+                    console.log(this.responseText);
+                }
+            });
+            xhr.open("POST", "http://localhost:8080/paper-crawler/get-crawler-paper-import-by-query");
+            // 在使用 xhr 的时候，不能使用对象的形式传参（除了form-data对象）
+
+            var data = JSON.stringify({
+                "resourceName": "2020-2021学年江苏省南通市海安市一年级（下）期中语文试卷",
+                "resourceStatus": 3,
+                "failedCode": 209
+            });
+
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.send(data);
+            return false;
+        };
+
+        document.getElementById("sendStreamPost").onclick = function () {
+            let xhr = new XMLHttpRequest();
+            xhr.withCredentials = true;
+            xhr.addEventListener("readystatechange", function() {
+                if(this.readyState === 4) {
+                    console.log(this.responseText);
+                }
+            });
+            xhr.open("POST", "http://localhost:8080/paper-crawler/get-crawler-paper-import-by-query");
+            // 在使用 xhr 的时候，不能使用对象的形式传参（除了form-data对象）
+
+            var x = new Uint8Array(1);
+            x[0]=128;
+
+            xhr.setRequestHeader("Content-Type", "application/octet-stream");
+            xhr.send(x);
+            return false;
+        };
+    }
+</script>
+</html>
