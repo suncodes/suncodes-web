@@ -25,4 +25,22 @@
         <servlet-name>AddToCartServlet</servlet-name>
         <url-pattern>/addToCart</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>helloServlet</servlet-name>
+        <servlet-class>servlets.HelloServlet</servlet-class>
+        <init-param>
+            <param-name>hehe</param-name>
+            <param-value>hehe-value</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>helloServlet</servlet-name>
+        <url-pattern>/helloServlet</url-pattern>
+    </servlet-mapping>
+
+    <context-param>
+        <param-name>content-he</param-name>
+        <param-value>content-he-value</param-value>
+    </context-param>
 </web-app>
