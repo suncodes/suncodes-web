@@ -10,18 +10,27 @@
     <span>这是logo</span>
 </div>
 <div>
-    <div style="text-align: center; width: 49%; display: inline-block">欢迎登录</div>
-    <div style=" width: 50%; display: inline-block;">
+    <div style="text-align: center; width: 50%; display: inline-block">欢迎登录</div>
+    <div style=" width: 30%; display: inline-block;">
         <div>
-            <div style="border: red 1px solid">
+            <div style="display: flex;justify-content: space-between">
                 <span>尚硅谷会员</span>
                 <span><a href="">立即注册</a></span>
             </div>
-            <div>提示语</div>
+            <div style="text-align: right">提示语</div>
             <div>
                 <form method="post">
-                    <label>用户名</label>
-                    <label>密码</label>
+                    <label>
+                        <span style="display:inline-block; width: 120px;text-align: right">用户名:</span>
+                        <input style="width: 300px" type="text" name="username">
+                    </label>
+                    <br/>
+                    <label>
+                        <span style="display:inline-block; width: 120px;text-align: right">密码:</span>
+                        <input style="width: 300px" type="text" name="password">
+                    </label>
+                    <br/>
+                    <input type="submit" value="登录" id="sub_btn" />
                 </form>
             </div>
         </div>
