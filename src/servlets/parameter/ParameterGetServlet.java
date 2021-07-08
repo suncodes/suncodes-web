@@ -16,11 +16,12 @@ public class ParameterGetServlet extends HttpServlet {
         // GET 参数只能是 查询字符串的形式发送
         String characterEncoding = req.getCharacterEncoding();
         System.out.println("characterEncoding: " + characterEncoding);
+        req.setCharacterEncoding("UTF-8");
         Map<String, String[]> parameterMap = req.getParameterMap();
         for (Map.Entry<String, String[]> stringEntry : parameterMap.entrySet()) {
-            System.out.println(new String(stringEntry.getKey().getBytes("iso-8859-1"), "UTF-8"));
+            System.out.println(stringEntry.getKey());
             for (String s : stringEntry.getValue()) {
-                System.out.println(new String(s.getBytes("iso-8859-1"), "UTF-8"));
+                System.out.println(s);
             }
         }
 
