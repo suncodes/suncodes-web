@@ -70,7 +70,7 @@
                     console.log(this.responseText);
                 }
             });
-            xhr.open("GET", "http://localhost:8080/paper-crawler/get-crawler-paper-import-by-query");
+            xhr.open("GET", "http://localhost:8080/parameterGetServlet");
             // 在使用 xhr 的时候，不能使用对象的形式传参（除了form-data对象）
             var obj = {
                 "id": "33918",

@@ -43,4 +43,41 @@
         <param-name>content-he</param-name>
         <param-value>content-he-value</param-value>
     </context-param>
+
+    <servlet>
+        <servlet-name>requestAPIServlet</servlet-name>
+        <servlet-class>servlets.request.RequestAPIServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>requestAPIServlet</servlet-name>
+        <url-pattern>/requestAPIServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>parameterGetServlet</servlet-name>
+        <servlet-class>servlets.parameter.ParameterGetServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>parameterGetServlet</servlet-name>
+        <url-pattern>/parameterGetServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>parameterPostServlet</servlet-name>
+        <servlet-class>servlets.parameter.ParameterPostServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>parameterPostServlet</servlet-name>
+        <url-pattern>/parameterPostServlet</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>responseIOServlet</servlet-name>
+        <servlet-class>servlets.response.ResponseIOServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>responseIOServlet</servlet-name>
+        <url-pattern>/responseIOServlet</url-pattern>
+    </servlet-mapping>
 </web-app>
