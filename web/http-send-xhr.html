@@ -38,12 +38,16 @@
         document.getElementById("sendParamsGet").onclick = function () {
             let xhr = new XMLHttpRequest();
             xhr.withCredentials = true;
+            // xhr 只会相信自己声明的响应类型
+            xhr.responseType = "blob";
             xhr.addEventListener("readystatechange", function() {
                 if(this.readyState === 4) {
-                    console.log(this.responseText);
+                    console.log(this.response);
+                    var blob = new Blob([xhr.response], {type: 'image/png'});
+                    console.log(blob);
                 }
             });
-            xhr.open("GET", "http://localhost:8080/paper-crawler/get-crawler-paper-import-by-query?id=33918&collectSource=2");
+            xhr.open("GET", "http://localhost:8080/responseIOServlet");
             xhr.send();
             return false;
         };
