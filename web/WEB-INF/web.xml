@@ -80,4 +80,22 @@
         <servlet-name>responseIOServlet</servlet-name>
         <url-pattern>/responseIOServlet</url-pattern>
     </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>loginServlet</servlet-name>
+        <servlet-class>book.web.LoginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>loginServlet</servlet-name>
+        <url-pattern>/loginServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>registServlet</servlet-name>
+        <servlet-class>book.web.RegistServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>registServlet</servlet-name>
+        <url-pattern>/registServlet</url-pattern>
+    </servlet-mapping>
 </web-app>

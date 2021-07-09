@@ -12,6 +12,8 @@
   </head>
   <body>
     <a href="helloAjax.txt">helloAjax</a>
+    <br/>
+    <a href="book_static/user/login.html">登录页面</a>
   </body>
   <script>
     // 1. 获取 a 节点, 并为其添加 onclick 响应函数
