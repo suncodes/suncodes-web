@@ -98,4 +98,22 @@
         <servlet-name>registServlet</servlet-name>
         <url-pattern>/registServlet</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>uploadServlet</servlet-name>
+        <servlet-class>file.UploadServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>uploadServlet</servlet-name>
+        <url-pattern>/uploadServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>download</servlet-name>
+        <servlet-class>file.Download</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>download</servlet-name>
+        <url-pattern>/download</url-pattern>
+    </servlet-mapping>
 </web-app>

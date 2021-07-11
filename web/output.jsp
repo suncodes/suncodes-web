@@ -11,11 +11,35 @@
     <title>Title</title>
 </head>
 <body>
+<%--    <%--%>
+<%--        out.write("12");--%>
+<%--        // 尽量使用 out.print--%>
+<%--        out.print(13);--%>
+<%--        response.getWriter().print("he");--%>
+<%--    %>--%>
+
+<h1 style="text-align: center">九九乘法表</h1>
+<table border="0" cellspacing="0" style="margin: 0 auto">
     <%
-        out.write("12");
-        // 尽量使用 out.print
-        out.print(13);
-        response.getWriter().print("he");
+        for (int i = 1; i < 10; i++) {
     %>
+    <tr>
+        <%
+            for (int j = 1; j < 10; j++) {
+                if (j < i) {
+        %>
+        <td style="padding-right: 30px">
+            <%=j + " × " + i + " = " + i * j%>
+        </td>
+        <%
+                }
+            }
+        %>
+    </tr>
+    <%
+        }
+    %>
+</table>
+
 </body>
 </html>
